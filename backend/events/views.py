@@ -25,9 +25,35 @@ def login(request):
             })
         else:
             return Response({
-                "error":"Invalid username or password"
+                "message":"Invalid username or password"
             })
     else:
         return Response({
-            "error":"Invalid username or password"
+            "message":"Invalid username or password"
         })
+    
+@api_view(['POST'])
+def register(request):
+    serializer = LoginSerializer(data=request.data)
+    oldUser = User.objects.filter(username=serializer.data['username'])
+    if oldUser:
+        return Response({
+            "message":"Username already exists"
+        },
+        status=409
+        )
+    if serializer.is_valid():
+        user = User.objects.create_user(username=serializer.data['username'],password=serializer.data['password'])
+        token,_ = Token.objects.get_or_create(user=user)
+        return Response({
+            "username":user.username,
+            "token":token.key
+        },
+        status=201
+        )
+    else:
+        return Response({
+            "message":"Invalid username or password"
+        },
+        status=400
+        )
