@@ -1,6 +1,5 @@
-# Internships
+# Bloc
 
-This repo will contains all the assignments I made to get an internship.
-
-You can take a look at branches to see assigments respective to company's name.
-
+## Tech Stack
+- Flutter
+- Pocketbase(since this is just a flutter project so I stayed away from writing my own backend from scratch)
