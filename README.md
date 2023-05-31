@@ -1,26 +1,6 @@
+# Internships
 
-## Event Manager
-A web application to create events and share it with public. 
+This repo will contains all the assignments I made to get an internship.
 
-### Tech Stack
-- React(vite)
-- Tailwindcss
-- Django
-- Mysql
-- Django Rest Framework
-
-
-### Screenshots
-
-![image.png](/assets/register.png)
-
-![image.png](/assets/upcoming-events.png)
-
-![image.png](/assets/your-events.png)
-
-![](/assets/create-an-event.png)
-
-![image.png](/assets/event-info.png)
-
-![image.png](/assets/event-info-liked.png)
+You can take a look at branches to see assigments respective to company's name.
 
