@@ -4,15 +4,11 @@ class ProductResponse {
   final String description;
   final String category;
   final String image;
-  const ProductResponse({
-    required this.name,
-    required this.price,
-    required this.description,
-    required this.category,
-    required this.image,
-  });
-  factory ProductResponse.fromJSON(Map<String, dynamic> json) {
+  final String id;
+  const ProductResponse({required this.name, required this.price, required this.description, required this.category, required this.image, required this.id});
+  factory ProductResponse.fromJSON(String id, Map<String, dynamic> json) {
     return ProductResponse(
+      id: id,
       name: json['name'],
       price: json['price'],
       description: json['description'],
