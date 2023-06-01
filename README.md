@@ -15,4 +15,6 @@
 
 ## Showcase
 
+The data is provided by [faker.js](https://fakerjs.dev/)
+
 <video src="/assets/showcase.mkv" alt="showcase" />
