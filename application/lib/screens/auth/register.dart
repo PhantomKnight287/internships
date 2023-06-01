@@ -1,6 +1,7 @@
 import 'package:application/bloc/user/user_bloc.dart';
 import 'package:application/main.dart';
 import 'package:application/screens/auth/login.dart';
+import 'package:application/screens/home/main.dart';
 import 'package:application/shared/button.dart';
 import 'package:application/shared/input.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pocketbase/pocketbase.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -96,11 +98,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 "password": _passwordController.text,
                                 "passwordConfirm": _passwordController.text,
                               });
+                              final storage = await SharedPreferences.getInstance();
+                              storage.setString("token", pb.authStore.token);
                               context.read<UserBloc>().add(
                                     UserLoggedInEvent(
                                       username: res.data['username'],
                                     ),
                                   );
+                              Navigator.of(context).pushReplacement(CupertinoPageRoute(
+                                builder: (context) => const HomeScreen(),
+                              ));
                             } on ClientException catch (error) {
                               setState(() {
                                 loading = false;
