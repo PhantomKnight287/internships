@@ -1,14 +1,16 @@
 part of 'cart_bloc.dart';
 
-@immutable
-abstract class CartState {}
+abstract class CartState {
+  List<CartItem> products = [];
+}
 
 class CartInitial extends CartState {
-  final List<CartItem> products = [];
   CartInitial();
 }
 
 class CartWithItems extends CartState {
-  final List<CartItem> products;
+  @override
+  List<CartItem> products = [];
+
   CartWithItems(this.products);
 }

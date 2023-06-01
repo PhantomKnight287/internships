@@ -14,6 +14,7 @@ class CartItem extends ProductResponse {
           image: product.image,
           name: product.name,
           price: product.price,
+          id: product.id,
         );
 }
 
@@ -21,7 +22,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitial()) {
     on<CartAddEvent>(
       (event, emit) {
-        final List<CartItem> products = (state as CartWithItems).products;
+        final List<CartItem> products = (state).products;
         final ProductResponse product = event.product;
         final int index = products.indexWhere(
           (element) => element.name == product.name,
