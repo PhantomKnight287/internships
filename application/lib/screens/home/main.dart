@@ -1,7 +1,8 @@
 import 'package:application/main.dart';
 import 'package:application/models/product.dart';
+import 'package:application/screens/cart/main.dart';
+import 'package:application/screens/music/main.dart';
 import 'package:application/screens/product/main.dart';
-import 'package:application/shared/input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,8 +17,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Future<List<ProductResponse>> _fetchProducts() async {
-    final res = await pb.collection("products").getFullList(sort: '-created');
-    return res.map<ProductResponse>((e) => ProductResponse.fromJSON(e.data)).toList();
+    final res = await pb.collection("products").getFullList(sort: '-created', expand: '*');
+    return res.map<ProductResponse>((e) => ProductResponse.fromJSON(e.id, e.data)).toList();
   }
 
   TextEditingController controller = TextEditingController();
@@ -35,6 +36,28 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             scrolledUnderElevation: 0,
             elevation: 0,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                      builder: (context) => const MusicPlayer(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.music_note),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                      builder: (context) => const Cart(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.shopping_cart_outlined),
+              )
+            ],
           ),
         ),
         body: FutureBuilder(
@@ -48,56 +71,19 @@ class _HomeScreenState extends State<HomeScreen> {
             }
             final List<ProductResponse> products = snapshot.data as List<ProductResponse>;
             return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 2,
-                    child: InputField(
-                      hintText: "Search Here",
-                      keyboardType: TextInputType.text,
-                      controller: controller,
-                      hintStyle: GoogleFonts.outfit(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      suffixIcon: ElevatedButton(
-                        onPressed: () {
-                          // Get.to(
-                          //   () => ShipmentInfo(
-                          //     id: _trackingNumberController.text,
-                          //     takeToBackScreen: true,
-                          //   ),
-                          // );
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.black),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.7),
-                            ),
-                          ),
-                          padding: MaterialStateProperty.all(
-                            const EdgeInsets.symmetric(
-                              horizontal: 30,
-                              vertical: 10,
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          "Search",
-                          style: GoogleFonts.outfit(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      ),
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    "Products",
+                    style: GoogleFonts.outfit(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
                     ),
+                    textAlign: TextAlign.left,
                   ),
                 ),
                 Expanded(
@@ -122,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   price: product.price,
                                   category: product.category,
                                   index: index,
+                                  id: product.id,
                                 );
                               },
                               fullscreenDialog: true,
