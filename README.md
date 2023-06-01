@@ -17,4 +17,4 @@
 
 The data is provided by [faker.js](https://fakerjs.dev/)
 
-<video src="/assets/showcase.mkv" alt="showcase" />
+https://raw.githubusercontent.com/PhantomKnight287/internships/infowareindia/assets/showcase.mkv
