@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       final storage = await SharedPreferences.getInstance();
       final token = storage.getString("token");
-      if (token == null) return;
+      if (token == null || token.isEmpty) return;
       pb
           .collection("users")
           .authRefresh(headers: {"authorization": token})
@@ -55,27 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: BlocConsumer<UserBloc, UserState>(
-        listener: (context, state) => {
-          if (state is UserLoggedOutState || state is UserInitial)
-            {
-              pb
-                  .collection("users")
-                  .authRefresh()
-                  .then(
-                    (value) => {
-                      context.read<UserBloc>().add(
-                            UserLoggedInEvent(
-                              username: value.record!.data['username'],
-                            ),
-                          ),
-                    },
-                  )
-                  .catchError(
-                    (e) => print(e),
-                  )
-            }
-        },
+      body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
           return Center(
             child: Container(
