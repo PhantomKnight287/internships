@@ -1,5 +1,8 @@
+import 'package:application/bloc/cart/cart_bloc.dart';
+import 'package:application/models/product.dart';
 import 'package:application/shared/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProductInfo extends StatelessWidget {
@@ -9,6 +12,7 @@ class ProductInfo extends StatelessWidget {
   final String price;
   final String category;
   final int index;
+  final String id;
   const ProductInfo({
     super.key,
     required this.image,
@@ -17,6 +21,7 @@ class ProductInfo extends StatelessWidget {
     required this.price,
     required this.category,
     required this.index,
+    required this.id,
   });
 
   @override
@@ -115,7 +120,26 @@ class ProductInfo extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  print('k');
+                  context.read<CartBloc>().add(
+                        CartAddEvent(
+                          product: ProductResponse(
+                            category: category,
+                            description: description,
+                            image: image,
+                            name: title,
+                            price: price,
+                            id: id,
+                          ),
+                          quantity: 1,
+                        ),
+                      );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Added to cart"),
+                      duration: Duration(seconds: 1),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
                 },
               )
             ],
