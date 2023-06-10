@@ -22,5 +22,5 @@ You can take a look at branches to view codebases. The name of branch is same as
 --- | --- | --- | --- | ---|
 | Ignis Web Solutions | A clone of [EventBrite](https://www.eventbrite.com/) with basic features | Vite, React, React Router Dom, Django, Mysql, Django Rest Framework | `ignis-web-solutions` | 😔 |
 | Infoware India | an ecommerce flutter app with music functionality | Flutter, Pocketbase, Flutter Bloc | `infowareindia` | 😔 |
-| Giga Growth Ventures | A site with google auth, showing price of a stock and share it with another user | MERN, Typescript, React Router Dom, Zustand | `giga-growth-ventures` | ✅ |
+| Giga Growth Ventures | A site with google auth, showing price of a stock and share it with another user | MERN, Typescript, React Router Dom, Zustand | `giga-growth-ventures` | 😔 |
 ---
