@@ -12,7 +12,6 @@ You can take a look at branches to view codebases. The name of branch is same as
 | --- | --- |
 | ✅ | Completed |
 | 🚧 | In Progress |
-| 🚫 | Not Started |
 | 😔 | Rejected(either no reply from company or company rejected me) |
 
 
