@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useUser } from "../context/user";
-import { redirect } from "react-router-dom";
+import { redirect, useLocation } from "react-router-dom";
 import { axios } from "../utils/axios";
 
 interface Params {
   redirectIfNoToken?: boolean;
 }
 export default function useHydrate(props: Params) {
+  const { pathname } = useLocation();
   const { redirectIfNoToken } = props;
   const { setUser, user } = useUser();
 
@@ -22,7 +23,7 @@ export default function useHydrate(props: Params) {
       })
       .catch((err) => {
         console.log(err);
-        redirect("/auth/login");
+        redirect(`/auth/login?to=${pathname}`);
       });
   }, []);
 
