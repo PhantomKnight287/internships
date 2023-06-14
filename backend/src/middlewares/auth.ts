@@ -9,7 +9,8 @@ export default function AuthMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  if (ROUTES_TO_IGNORE.includes(req.path)) {
+  if (req.method === "OPTIONS") return next();
+  if (ROUTES_TO_IGNORE.includes(req.originalUrl)) {
     return next();
   }
   const token = req.headers.authorization?.split(" ")[1];
