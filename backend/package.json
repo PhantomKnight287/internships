@@ -21,7 +21,8 @@
     "helmet": "^7.0.0",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "source-map-support": "^0.5.21"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
