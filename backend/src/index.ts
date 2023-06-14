@@ -10,14 +10,9 @@ import { routers } from "./controllers/index.js";
 import AuthMiddleware from "./middlewares/auth.js";
 
 export const app: ReturnType<typeof express> = express();
-app.use(
-  cors(),
-  express.json(),
-  morgan("dev"),
-  helmet(),
-  routers,
-  AuthMiddleware
-);
+app.use(cors(), express.json(), morgan("dev"), helmet());
+app.use(AuthMiddleware);
+app.use(routers);
 app.get("/", async (req, res) => {
   return res.json({
     message: "Hello World",
