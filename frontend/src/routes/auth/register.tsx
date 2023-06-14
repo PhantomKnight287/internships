@@ -45,7 +45,9 @@ export default function Register() {
       localStorage.setItem("token", data.data.token);
       setLoading(false);
       setUser({ username: data.data.user.username });
-      navigate("/");
+      navigate("/", {
+        replace: true,
+      });
     } catch (e) {
       setLoading(false);
       toast.error((e as any).response.data.message);

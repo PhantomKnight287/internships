@@ -1,4 +1,4 @@
-import { Link, redirect, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../components/shared/button";
 import Input from "../../components/shared/input";
 import { useState } from "react";
@@ -11,6 +11,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   useHydrate({ redirectIfNoToken: false });
   const navigate = useNavigate();
+  const [query] = useSearchParams();
   const formState = useForm<{
     username: string;
     password: string;
@@ -35,13 +36,13 @@ export default function Login() {
       localStorage.setItem("token", data.data.token);
       setLoading(false);
       setUser({ username: data.data.user.username });
-      navigate("/");
+      navigate(query.get("to") || "/", { replace: true });
     } catch (e: any) {
       setLoading(false);
       toast.error(e.response.data.message);
     }
   };
-  if (user.username) return <Navigate to="/" replace />;
+  if (user.username) return <Navigate to={query.get("to") || "/"} replace />;
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
