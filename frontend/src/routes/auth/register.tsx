@@ -1,4 +1,4 @@
-import { Link, redirect, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Button from "../../components/shared/button";
 import Input from "../../components/shared/input";
 import { useState } from "react";
