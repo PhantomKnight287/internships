@@ -7,6 +7,6 @@ export default async function validateBody(
   try {
     await schema.validateAsync(body);
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 }
