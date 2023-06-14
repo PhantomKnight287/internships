@@ -4,6 +4,7 @@ import { useUser } from "../../context/user";
 import { BiBookAdd } from "react-icons/bi";
 function Header() {
   const { username } = useUser((u) => u.user);
+  const logout = useUser((u) => u.logOut);
   return (
     <header className="flex justify-between items-center h-16 bg-white text-black relative shadow-sm p-4">
       <div className="flex items-center">
@@ -48,14 +49,17 @@ function Header() {
                 <BiBookAdd className="w-6 h-6" />
               </button>
             </Link>
-            <Link to="/">
-              <button
-                type="button"
-                className="text-black bg-gray-100 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5"
-              >
-                {username}
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="text-black bg-gray-100 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5"
+              onClick={() => {
+                localStorage.removeItem("token");
+                logout();
+                window.location.reload();
+              }}
+            >
+              {username}
+            </button>
           </div>
         ) : null}
       </div>

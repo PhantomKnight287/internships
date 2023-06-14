@@ -4,6 +4,8 @@ import { axios } from "../utils/axios";
 import { Task } from "../types/task";
 import { Fragment } from "react";
 import Taskitem from "../components/shared/task-item";
+import { useUser } from "../context/user";
+import { Navigate } from "react-router-dom";
 
 function RootRoute() {
   useHydrate({ redirectIfNoToken: true });
@@ -33,7 +35,8 @@ function RootRoute() {
     },
     getNextPageParam: (lastPage, _) => lastPage?.next,
   });
-
+  const { username } = useUser((u) => u.user);
+  if (!username) return <Navigate to="/auth/login" replace />;
   return (
     <div className="p-4 flex flex-col items-center justify-center">
       <h1 className="text-2xl font-bold text-center">Tasks</h1>
