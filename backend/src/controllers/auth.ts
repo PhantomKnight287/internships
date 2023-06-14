@@ -3,7 +3,7 @@ import prisma from "../db/prisma.js";
 import { registerSchema } from "../dto/auth.js";
 import validateBody from "../helpers/bodyValidator.js";
 import { compare, hash } from "bcrypt";
-import pkg from "jsonwebtoken";
+import pkg, { verify } from "jsonwebtoken";
 const { sign } = pkg;
 import { JWT_SECRET } from "../constants/index.js";
 
@@ -14,7 +14,7 @@ router.post("/auth/register", async (req, res) => {
     await validateBody(registerSchema, req.body);
   } catch (e) {
     return res.status(400).json({
-      message: e.details[0].message,
+      message: e.message,
     });
   }
   const { username, password } = req.body;
@@ -57,7 +57,7 @@ router.post("/auth/login", async (req, res) => {
     await validateBody(registerSchema, req.body);
   } catch (e) {
     return res.status(400).json({
-      message: e.details[0].message,
+      message: e.message,
     });
   }
   const user = await prisma.user.findUnique({
@@ -85,6 +85,22 @@ router.post("/auth/login", async (req, res) => {
       username: user.username,
     },
     token,
+  });
+});
+
+router.get("/auth/me", async (req, res) => {
+  const headers = req.headers.authorization.split(" ")[1];
+  const { id } = verify(headers, JWT_SECRET) as { id: string };
+  const user = await prisma.user.findUnique({
+    where: {
+      id,
+    },
+    select: {
+      username: true,
+    },
+  });
+  return res.status(200).json({
+    user,
   });
 });
 

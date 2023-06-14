@@ -1,3 +1,4 @@
+import "source-map-support"; // To get the correct line numbers in stack traces
 import "./constants/index.js"; // Making sure env variables are loaded before anything else
 import "./db/prisma.js"; // Instantiating the connection
 import express from "express";
