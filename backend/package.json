@@ -8,7 +8,8 @@
     "dev": "concurrently \"tsc -p tsconfig.json --watch\" \"cross-env NODE_ENV=development nodemon dist/index.js\"",
     "run:prod": "cross-env NODE_ENV=production node dist/index.js",
     "prepare": "tsc -p tsconfig.json",
-    "test": "tsc -p tsconfig.json && cross-env NODE_ENV=test jest"
+    "test": "tsc -p tsconfig.json && cross-env NODE_ENV=test jest",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "Gurpal Singh",
@@ -22,6 +23,7 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
+    "nanoid": "^4.0.2",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
