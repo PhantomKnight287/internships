@@ -40,7 +40,7 @@ function Header() {
               hidden: !username,
             })}
           >
-            <Link to="/create">
+            <Link to="/task/create">
               <button
                 type="button"
                 className="text-black bg-green-100 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2 "
