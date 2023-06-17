@@ -23,4 +23,5 @@ You can take a look at branches to view codebases. The name of branch is same as
 | Infoware India | an ecommerce flutter app with music functionality | Flutter, Pocketbase, Flutter Bloc | `infowareindia` | 😔 |
 | Giga Growth Ventures | A site with google auth, showing price of a stock and share it with another user | MERN, Typescript, React Router Dom, Zustand | `giga-growth-ventures` | 😔 |
 | Mohite Tax Consulting | Task Management System | MERN | `mohite-tax-consulting` | ✅ |
+| CodeDamn | [Figma File](https://www.figma.com/file/TXLwYa51OaUfXRjO5AQvL0/Codedamn-Frontend-Assessment?type=design&node-id=0-1&t=xlHj8BWnyVSG68ft-0) | Nextjs, tailwindcss, drizzle orm, postgresql | `codedamn` | 🚧 |
 ---
