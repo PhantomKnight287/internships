@@ -1,19 +1,19 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
 
+import Certificates from "./portfolio/certificates"
+import Playgrounds from "./portfolio/playgrounds"
+import Projects from "./portfolio/projects"
+import Stats from "./portfolio/stats"
 import AboutMe from "./resume/aboutme"
 import Education from "./resume/education"
 import Interests from "./resume/interests"
 import Languages from "./resume/languages"
 import TechSkills from "./resume/techSkills"
 import WorkExperience from "./resume/workExperience"
-import Certificates from "./portfolio/certificates"
-import Playgrounds from "./portfolio/playgrounds"
-import Projects from "./portfolio/projects"
-import Stats from "./portfolio/stats"
 
 function ContentSwitcher() {
   const [activeContent, setActiveContent] = useState<"portfolio" | "resume">(
@@ -23,13 +23,13 @@ function ContentSwitcher() {
     <>
       <div className="mt-8 flex w-full flex-row gap-4 rounded-xl border-[1px] border-gray-200 py-2 pl-4">
         <Button
-          variant={activeContent === "portfolio" ? "secondary" : "ghost"}
+          variant={activeContent === "portfolio" ? "default" : "ghost"}
           onClick={() => setActiveContent("portfolio")}
         >
           Portfolio
         </Button>
         <Button
-          variant={activeContent === "resume" ? "secondary" : "ghost"}
+          variant={activeContent === "resume" ? "default" : "ghost"}
           onClick={() => setActiveContent("resume")}
         >
           Resume
