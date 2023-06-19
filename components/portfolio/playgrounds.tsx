@@ -1,4 +1,3 @@
-import React from "react"
 import { AVATAR_URL } from "@/constants"
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
 import { AiFillHtml5 } from "react-icons/ai"
@@ -75,7 +74,7 @@ export default function Playgrounds() {
                   </Avatar>
                 </div>
                 <p className="ml-2 line-clamp-1 text-sm font-semibold text-gray-600 md:text-base">
-                  Shared with{" "}
+                  Shared with
                   <span className="ml-1 font-bold">Gurpal, Shivam</span>.. +7
                   more
                 </p>
