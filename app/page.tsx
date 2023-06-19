@@ -88,7 +88,7 @@ export default function IndexPage() {
                 ))}
               </div>
               {/* Skills list end */}
-              <div className="my-8 h-[0.33px] w-full bg-gray-300" />
+              <div className="mt-8 h-[0.33px] w-full bg-gray-300" />
               <div className="mb-8 flex flex-row flex-wrap justify-center md:justify-normal lg:flex-nowrap">
                 {/* Social Media icons */}
                 <Socials />
