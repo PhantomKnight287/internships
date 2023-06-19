@@ -1,50 +1,42 @@
+"use client"
+
+import React from "react"
 import Link from "next/link"
+import { AVATAR_URL } from "@/constants"
+import { Bell, Zap } from "lucide-react"
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+import { Input } from "./ui/input"
 
-export function SiteHeader() {
+export default function Header() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <MainNav items={siteConfig.mainNav} />
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-1">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                })}
-              >
-                <Icons.gitHub className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
-            <Link
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                })}
-              >
-                <Icons.twitter className="h-5 w-5 fill-current" />
-                <span className="sr-only">Twitter</span>
-              </div>
-            </Link>
-            <ThemeToggle />
-          </nav>
+    <header className="sticky top-0 z-50 flex w-full flex-row border-b border-gray-200 bg-white p-4">
+      <div className="flex items-center justify-center">
+        <Link href="/">
+          <h1 className="text-center text-xl font-bold lg:text-2xl">
+            CodeDamn
+          </h1>
+        </Link>
+      </div>
+      <div className="ml-auto flex flex-row items-center">
+        <div className="hidden flex-row items-center lg:flex">
+          <Input placeholder="Search" />
+        </div>
+        <Zap className="ml-2 h-6 w-6" fill="#6366F1" strokeWidth={0.1} />
+        <span className="font-bold text-gray-500">2</span>
+        <div className="relative ml-2 inline-block">
+          <Bell className="ml-2 h-6 w-6" />
+          <span className="absolute -top-1 right-0 rounded-full bg-red-500 px-[5px] py-[1px] text-[10px] text-white">
+            2
+          </span>
+        </div>
+        <div className="ml-4">
+          <Link href="/edit">
+            <Avatar>
+              <AvatarImage src={AVATAR_URL} />
+              <AvatarFallback>PhantomKnight287</AvatarFallback>
+            </Avatar>
+          </Link>
         </div>
       </div>
     </header>
