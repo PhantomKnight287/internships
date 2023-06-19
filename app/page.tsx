@@ -1,11 +1,14 @@
+"use client"
+
 import { AVATAR_URL } from "@/constants"
 import { IconBookmarks } from "@tabler/icons-react"
 import { MapPin } from "lucide-react"
-import { SocialIcon } from "react-social-icons"
+import { useEffect, useState } from "react"
 
+import Banner from "@/components/portfolio/banner"
+import Socials from "@/components/profile/socials"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import Banner from "@/components/portfolio/banner"
 
 import ContentSwitcher from "../components/contentSwitcher"
 
@@ -21,14 +24,26 @@ const SKILLS = [
   "Prisma",
 ]
 
-const SOCIALS = [
-  "https://twitter.com/gurpalsingh287",
-  "https://github.com/phantomknight287",
-  "https://www.linkedin.com/in/gurpal-singh-0a2935221/",
-  "https://instagram.com/phantomknight287/",
-]
+type State = {
+  displayName: string
+  about: string
+  profession: string
+  dateOfBirth: Date
+  gender: string
+  location: string
+  followersAndFollowing: boolean
+  xp: boolean
+  achievements: boolean
+}
 
 export default function IndexPage() {
+  const [savedState, setSavedState] = useState<State | null>(null)
+
+  useEffect(() => {
+    setSavedState(
+      JSON.parse(localStorage.getItem("edit-profile-form") || "null")
+    )
+  }, [])
   return (
     <div className="mt-8 flex flex-col items-center justify-center">
       <div className="container">
@@ -43,7 +58,9 @@ export default function IndexPage() {
             </div>
             <div className="ml-6 flex flex-1 flex-col">
               <div className="mt-4 flex flex-row flex-wrap lg:flex-nowrap">
-                <h1 className="text-2xl font-bold">Gurpal Singh</h1>
+                <h1 className="text-2xl font-bold">
+                  {savedState?.displayName || "Gurpal Singh"}
+                </h1>
                 <div className="flex flex-row items-center">
                   <span className="ml-2 h-fit rounded-md bg-[#BEF264] px-4 py-1 text-sm font-semibold text-black">
                     Pro
@@ -55,11 +72,11 @@ export default function IndexPage() {
               </div>
               <div className="mt-2">
                 <p className="text-md text-gray-600">
-                  Full stack dev at Hackarmour | IGNOU&quot;18
+                  {savedState?.about || "Full stack dev"}
                 </p>
                 <p className="mt-1 text-sm text-gray-400">
                   <MapPin className="mr-2 inline-block h-5 w-5" />
-                  New Delhi, India
+                  {savedState?.location || "New Delhi, India"}
                 </p>
               </div>
               {/* Skills List */}
@@ -74,27 +91,14 @@ export default function IndexPage() {
               <div className="my-8 h-[0.33px] w-full bg-gray-300" />
               <div className="mb-8 flex flex-row flex-wrap justify-center md:justify-normal lg:flex-nowrap">
                 {/* Social Media icons */}
-                <div className="flex flex-row flex-wrap lg:flex-nowrap">
-                  {SOCIALS.map((social, index) => (
-                    <Button
-                      variant={"ghost"}
-                      key={index}
-                      className="hover:bg-[unset]"
-                    >
-                      <SocialIcon
-                        url={social}
-                        style={{ height: 45, width: 45 }}
-                      />
-                    </Button>
-                  ))}
-                </div>
+                <Socials />
                 {/* social media icons end */}
                 {/* contact and bookmark button */}
                 <div className="mt-4 flex flex-row items-center sm:mr-0 sm:mt-0 md:ml-auto md:mr-5">
                   <Button variant={"outline"} className="hover:bg-[unset]">
                     <IconBookmarks size={20} />
                   </Button>
-                  <Button variant={"default"} className="ml-4" asChild>
+                  <Button variant={"default"} className="ml-4">
                     <a href="mailto:phantomknight287@proton.me">Contact</a>
                   </Button>
                 </div>
