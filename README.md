@@ -26,4 +26,5 @@ You can take a look at branches to view codebases. The name of branch is same as
 | Giga Growth Ventures | A site with google auth, showing price of a stock and share it with another user | MERN, Typescript, React Router Dom, Zustand | `giga-growth-ventures` | 😔 |
 | Mohite Tax Consulting | Task Management System | MERN | `mohite-tax-consulting` | 😔 |
 | CodeDamn | [Figma File](https://www.figma.com/file/TXLwYa51OaUfXRjO5AQvL0/Codedamn-Frontend-Assessment?node-id=0%3A1&t=9seXONUyWuuIAaLc-1) | Nextjs, Supabase, Tailwindcss, Typescript | `codedamn` | 🛑 |
+| Job Freak | HTML page with sidebar | HTML, CSS, Javascript | `job-freak` | 🚧 |
 ---
