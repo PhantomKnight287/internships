@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Freak</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <a href="#home">Job Freak</a>
+      </div>
+      <div>
+        <button class="menu">
+          <i class="fa-solid fa-bars fa-2x"></i>
+        </button>
+      </div>
+    </header>
+    <aside class="sidebar">
+      <nav>
+        <div class="sidebar__item">
+          <a href="#" class="sidebar__link">
+            <i class="fas fa-home"></i>
+            <span> Home </span>
+          </a>
+        </div>
+        <div class="sidebar__item">
+          <a href="#contact" class="sidebar__link">
+            <i class="fa-solid fa-address-card"></i>
+            <span> Contact </span>
+          </a>
+        </div>
+        <div class="sidebar__item">
+          <a href="#about" class="sidebar__link">
+            <i class="fa-solid fa-circle-info"></i>
+            <span> About </span>
+          </a>
+        </div>
+        <div class="sidebar__item">
+          <a href="#guide" class="sidebar__link">
+            <i class="fa-solid fa-book"></i>
+            <span> Guide </span>
+          </a>
+        </div>
+      </nav>
+      <button class="sidebar__item">
+        <div class="sidebar__link">
+          <i class="fa-solid fa-arrow-right"></i>
+          <span> Collapse </span>
+        </div>
+      </button>
+    </aside>
+    <main>
+      <div id="home" class="content__container">
+        <h1 class="content__title">Job Freak</h1>
+        <p class="content__description">
+          A place to find list of companies currently hiring.
+        </p>
+        <button class="content__button">
+          <a href="#guide">Get Started</a>
+        </button>
+      </div>
+      <div id="contact" class="content__container">
+        <h1 class="content__title">Job Freak</h1>
+        <p class="content__description">
+          Need some Help? Contact us and we will get back to you as soon as
+        </p>
+        <button class="content__button">
+          <a href="mailto:contact@mail.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span> Contact Us </span>
+          </a>
+        </button>
+      </div>
+
+      <div id="about" class="content__container">
+        <h1 class="content__title">About Job Freak</h1>
+        <p class="content__description">
+          Job Freak is a site where you can see lists of companies currently
+          hiring, salary offered, job description and other details.
+        </p>
+      </div>
+      <div id="guide" class="home content__container">
+        <h1 class="content__title">Guide</h1>
+        <p class="content__description">
+          This is a guide on how to use this site.
+        </p>
+        <ul>
+          <li>Go to Search Page</li>
+          <li>Search for a company</li>
+          <li>Click on the company you want to see</li>
+          <li>You will be redirected to the company's page</li>
+          <li>
+            You can see the company's name, salary offered, job description and
+            other details
+          </li>
+          <li>Click on "Apply Now" to apply for the job</li>
+        </ul>
+        <button class="content__button">
+          <a href="#guide">Get Started</a>
+        </button>
+      </div>
+    </main>
+    <script src="/index.js"></script>
+  </body>
+</html>
